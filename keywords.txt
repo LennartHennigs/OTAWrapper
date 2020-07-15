@@ -6,3 +6,4 @@ OnError	KEYWORD2
 getLastError	KEYWORD2
 loop	KEYWORD2
 setup	KEYWORD2
+errorToString	KEYWORD2

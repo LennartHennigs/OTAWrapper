@@ -1,6 +1,6 @@
 /* ------------------------------------------------- */
 
-#include <OTAWrapper.h>
+#include "OTAWrapper.h"
 #include "WiFiManager.h"        // https://github.com/tzapu/WiFiManager
 
 /* ------------------------------------------------- */
@@ -8,7 +8,7 @@
 #define SERIAL_SPEED        9600
 
 #define AP_NAME             "AP"
-#define OTA_NAME            "device"
+#define OTA_NAME            "esp"
 #define OTA_PASSWD          ""
 
 /* ------------------------------------------------- */

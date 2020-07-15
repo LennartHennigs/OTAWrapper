@@ -1,7 +1,7 @@
 {
 	"name": "OTAWrapper",
 	"keywords": "OTA",
-	"description": "Arduino Library to simplify OTA setup.",
+	"description": "ESP Library to simplify OTA setup.",
 	"homepage": "https://github.com/LennartHennigs/OTAWrapper",
 	"repository": {
 		"type": "git",

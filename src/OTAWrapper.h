@@ -1,12 +1,22 @@
+/////////////////////////////////////////////////////////////////
+/*
+  ESP Library to simplify OTA setup.
+  Copyright 2020 Lennart Hennigs
+*/
+/////////////////////////////////////////////////////////////////
 #pragma once
 
 #ifndef OTAWrapper_h
 #define OTAWrapper_h
+/////////////////////////////////////////////////////////////////
 
-#include <ArduinoOTA.h>
+#include "Arduino.h"
+#include "ArduinoOTA.h"
+
+/////////////////////////////////////////////////////////////////
 
 class OTAWrapper { 
- private:
+ protected:
    ota_error_t last_error;
 
    typedef void (*CallbackFunction) ();
@@ -24,10 +34,12 @@ class OTAWrapper {
    void onError(CallbackFunction f);
    void onProgress(CallbackFunction f);
 
+   String errorToString(ota_error_t error);
    ota_error_t getLastError();
    
    void setup(char *name, char *passwd = "", int port = 8266);
    void loop();
-}
-
+};
+/////////////////////////////////////////////////////////////////
 #endif
+/////////////////////////////////////////////////////////////////
