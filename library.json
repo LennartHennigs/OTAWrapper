@@ -1,0 +1,17 @@
+{
+	"name": "OTAWrapper",
+	"keywords": "OTA",
+	"description": "Arduino Library to simplify OTA setup.",
+	"homepage": "https://github.com/LennartHennigs/OTAWrapper",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/LennartHennigs/OTAWrapper"
+	},
+	"version": "1.2.0",
+	"authors": {
+		"name": "Lennart Hennigs",
+		"url": "https://lennarthennigs.de"
+	},
+	"frameworks": "arduino",
+	"platforms": "*"
+}
