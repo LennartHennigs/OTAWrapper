@@ -1,11 +1,13 @@
 # Changelog
 
 ## Unreleased
+-
+
+## [1.1.0] - 2020-12-31
 - added ```getProgress()``` function
 - updated the example
 
-
-## [1.1.0] - 2020-07-15
+## [1.1.0] - 2020-09-01
 - added blinking LED detection
 
 ## [1.0.0] - 2020-07-15
