@@ -2,6 +2,7 @@ OTAWrapper	KEYWORD1
 onStart	KEYWORD2
 onEnd	KEYWORD2
 onProgress	KEYWORD2
+getProgress	KEYWORD2
 OnError	KEYWORD2
 getLastError	KEYWORD2
 loop	KEYWORD2
