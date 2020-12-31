@@ -10,8 +10,10 @@
 /////////////////////////////////////////////////////////////////
 
 OTAWrapper::OTAWrapper() {
+#ifdef LED_BUILTIN
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH);
+#endif
 }
 
 /////////////////////////////////////////////////////////////////
@@ -63,20 +65,33 @@ String OTAWrapper::errorToString(ota_error_t error) {
 
 /////////////////////////////////////////////////////////////////
 
+
+  int OTAWrapper::getProgress() {
+    return progress;
+  }
+
+
 void OTAWrapper::setup(char *name, char *passwd /* = "" */, int port /* = 8266 */) {
     ArduinoOTA.onStart([=] () {
+#ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, LOW);
+#endif
       if (on_start != NULL) on_start();
     });
   
     ArduinoOTA.onProgress([=] (unsigned int progress, unsigned int total) {
       int p = (progress / (total / 100));
+      this->progress = p;
+#ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, (p % 2 == 1) ? HIGH : LOW); 
+#endif
       if (on_progress != NULL) on_progress();
     });
   
     ArduinoOTA.onEnd([=] () {
+#ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, HIGH);
+#endif
       if (on_end != NULL) on_end();
       ESP.restart();
       delay(1000);

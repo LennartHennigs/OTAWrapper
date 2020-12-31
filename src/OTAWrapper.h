@@ -17,7 +17,8 @@
 
 class OTAWrapper { 
  protected:
-   ota_error_t last_error;
+    ota_error_t last_error;
+    int progress = 0;
 
    typedef void (*CallbackFunction) ();
 
@@ -33,6 +34,8 @@ class OTAWrapper {
    void onEnd(CallbackFunction f);
    void onError(CallbackFunction f);
    void onProgress(CallbackFunction f);
+
+  int getProgress();
 
    String errorToString(ota_error_t error);
    ota_error_t getLastError();
