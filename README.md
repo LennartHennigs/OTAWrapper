@@ -25,8 +25,7 @@ These are the constructor and the member functions the library provides:
 
 
 ```
-
- OTAWrapper();
+OTAWrapper();
    
 void onStart(CallbackFunction f);  
 void onEnd(CallbackFunction f);
