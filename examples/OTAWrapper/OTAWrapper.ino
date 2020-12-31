@@ -39,10 +39,14 @@ void wifiSetup() {
 void setup() {
   Serial.begin(SERIAL_SPEED);
 
+  // this is for the "blink" sketch in the loop but with a randomized seed
+  // when you reupload this sketch the blink speed will most likely be different
   pinMode(LED_BUILTIN, OUTPUT);
   randomSeed(analogRead(0));
   pause = (random(10) + 1) * 100;
 
+  // I use the WiFi Manager to set up the connection
+  // you could also do it by habd
   wifiSetup();
   ota.setup(OTA_NAME, OTA_PASSWD);
   
@@ -50,16 +54,23 @@ void setup() {
     Serial.println("OTA START");
   });
   ota.onEnd([] () {
+    Serial.println(".");
     Serial.println("OTA END");
   });
   ota.onError([] () {
     Serial.println("OTA ERROR");
   });
+   ota.onProgress([] () {
+     int p = ota.getProgress();
+     if (p % 5 == 0) {
+       Serial.print(".");
+     }
+  });
 }
 
 void loop() {
   ota.loop();
-
+  // randomized "blink" code
   digitalWrite(LED_BUILTIN, HIGH);
   delay(pause);
   digitalWrite(LED_BUILTIN, LOW);
