@@ -1,5 +1,5 @@
-M5StackFaces
-============
+OTAWrapper
+==========
 
 * Author: Lennart Hennigs (https://www.lennarthennigs.de)
 * Copyright (C) 2020 Lennart Hennigs.
