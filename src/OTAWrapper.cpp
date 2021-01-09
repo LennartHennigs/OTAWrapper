@@ -11,8 +11,8 @@
 
 OTAWrapper::OTAWrapper() {
 #ifdef LED_BUILTIN
-    pinMode(LED_BUILTIN, OUTPUT);
-    digitalWrite(LED_BUILTIN, HIGH);
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
 #endif
 }
 
@@ -25,19 +25,19 @@ void OTAWrapper::onStart(CallbackFunction f) {
 /////////////////////////////////////////////////////////////////
 
 void OTAWrapper::onEnd(CallbackFunction f) {
-    on_end = f;
+  on_end = f;
 }
 
 /////////////////////////////////////////////////////////////////
 
 void OTAWrapper::onProgress(CallbackFunction f) {
-    on_progress = f;
+  on_progress = f;
 }
 
 /////////////////////////////////////////////////////////////////
 
 void OTAWrapper::onError(CallbackFunction f) {
-    on_error = f;
+  on_error = f;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -49,18 +49,18 @@ ota_error_t OTAWrapper::getLastError() {
 /////////////////////////////////////////////////////////////////
 
 String OTAWrapper::errorToString(ota_error_t error) {
-    switch (error) {
-        case OTA_AUTH_ERROR:
-            return "Auth Failed";
-        case OTA_BEGIN_ERROR:
-            return "Begin Failed";
-        case OTA_CONNECT_ERROR:
-            return "Connect Failed";
-        case OTA_RECEIVE_ERROR:
-            return "Receive Failed";
-        case OTA_END_ERROR:
-            return "End Failed";
-    }
+  switch (error) {
+  case OTA_AUTH_ERROR:
+    return "Auth Failed";
+  case OTA_BEGIN_ERROR:
+    return "Begin Failed";
+  case OTA_CONNECT_ERROR:
+    return "Connect Failed";
+  case OTA_RECEIVE_ERROR:
+    return "Receive Failed";
+  case OTA_END_ERROR:
+    return "End Failed";
+  }
 }
 
 /////////////////////////////////////////////////////////////////
@@ -72,50 +72,50 @@ String OTAWrapper::errorToString(ota_error_t error) {
 
 
 void OTAWrapper::setup(char *name, char *passwd /* = "" */, int port /* = 8266 */) {
-    ArduinoOTA.onStart([=] () {
-#ifdef LED_BUILTIN
+  ArduinoOTA.onStart([=] () {
+    #ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, LOW);
-#endif
-      if (on_start != NULL) on_start();
-    });
+    #endif
+    if (on_start != NULL) on_start();
+  });
   
-    ArduinoOTA.onProgress([=] (unsigned int progress, unsigned int total) {
-      int p = (progress / (total / 100));
-      this->progress = p;
-#ifdef LED_BUILTIN
+  ArduinoOTA.onProgress([=] (unsigned int progress, unsigned int total) {
+    int p = (progress / (total / 100));
+    this->progress = p;
+    #ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, (p % 2 == 1) ? HIGH : LOW); 
-#endif
-      if (on_progress != NULL) on_progress();
-    });
+    #endif
+    if (on_progress != NULL) on_progress();
+  });
   
-    ArduinoOTA.onEnd([=] () {
-#ifdef LED_BUILTIN
-      digitalWrite(LED_BUILTIN, HIGH);
-#endif
-      if (on_end != NULL) on_end();
-      ESP.restart();
-      delay(1000);
-    });
+  ArduinoOTA.onEnd([=] () {
+  #ifdef LED_BUILTIN
+    digitalWrite(LED_BUILTIN, HIGH);
+  #endif
+  if (on_end != NULL) on_end();
+    ESP.restart();
+    delay(1000);
+  });
   
-    ArduinoOTA.onError([=] (ota_error_t error) {
-        Serial.printf("Error[%u]: ", error);
-        Serial.print(errorToString(error));
-        last_error = error;
-        if (on_error != NULL) on_error();      
-    });
+  ArduinoOTA.onError([=] (ota_error_t error) {
+    Serial.printf("Error[%u]: ", error);
+    Serial.print(errorToString(error));
+    last_error = error;
+    if (on_error != NULL) on_error();      
+  });
 
-    ArduinoOTA.setPort(port);
-    ArduinoOTA.setHostname(name);
-    if (passwd != "") {
-      ArduinoOTA.setPassword(passwd);
-    }
-    ArduinoOTA.begin();
+  ArduinoOTA.setPort(port);
+  ArduinoOTA.setHostname(name);
+  if (passwd != "") {
+    ArduinoOTA.setPassword(passwd);
   }
+  ArduinoOTA.begin();
+}
 
 /////////////////////////////////////////////////////////////////
 
 void OTAWrapper::loop() {
-    ArduinoOTA.handle();
-  }
+  ArduinoOTA.handle();
+}
 
 /////////////////////////////////////////////////////////////////
