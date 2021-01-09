@@ -15,8 +15,7 @@
 
 WiFiManager wifiManager;
 OTAWrapper ota;
-
-int pause;
+int timeout;
 
 /* ------------------------------------------------- */
 
@@ -37,17 +36,25 @@ void wifiSetup() {
 /* ------------------------------------------------- */
 
 void setup() {
-  Serial.begin(SERIAL_SPEED);
+Serial.begin(SERIAL_SPEED);
+  while (!Serial) {
+    delay(20);
+  }
 
   // this is for the "blink" sketch in the loop but with a randomized seed
   // when you reupload this sketch the blink speed will most likely be different
-  pinMode(LED_BUILTIN, OUTPUT);
+    #ifdef LED_BUILTIN
+        pinMode(LED_BUILTIN, OUTPUT);
+    #endif
   randomSeed(analogRead(0));
-  pause = (random(10) + 1) * 100;
+  timeout = (random(10) + 1) * 100;
+  Serial.print("timeout: ");
+  Serial.println(timeout);
 
   // I use the WiFi Manager to set up the connection
   // you could also do it by habd
   wifiSetup();
+  Serial.println("Connected to WiFi");    
   ota.setup(OTA_NAME, OTA_PASSWD);
   
   ota.onStart([] () {
@@ -68,12 +75,19 @@ void setup() {
   });
 }
 
+/* ------------------------------------------------- */
+
 void loop() {
   ota.loop();
   // randomized "blink" code
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(pause);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(pause);
+  #ifdef LED_BUILTIN  
+    digitalWrite(LED_BUILTIN, HIGH);
+  #endif
+  delay(timeout);
+  #ifdef LED_BUILTIN  
+    digitalWrite(LED_BUILTIN, LOW);
+  #endif
+  Serial.print(".");
+  delay(timeout);
 }
 /* ------------------------------------------------- */
