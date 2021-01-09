@@ -1,7 +1,11 @@
 # Changelog
 
 ## Unreleased
--
+- 
+
+## [1.1.0] - 2020-01-09
+- added M5Stack example
+- added simple example
 
 ## [1.1.0] - 2020-12-31
 - added ```getProgress()``` function
