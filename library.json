@@ -13,5 +13,12 @@
 		"url": "https://lennarthennigs.de"
 	},
 	"frameworks": "arduino",
-	"platforms": "*"
+	"platforms": "*",
+	"dependencies": [
+		{
+			"owner": "tzapu",
+			"name": "WiFiManager",
+			"version": "*"
+		}
+	]
 }
