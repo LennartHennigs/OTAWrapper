@@ -1,14 +1,18 @@
 # Changelog
 
 ## Unreleased
-- 
+
+## [1.3.1] - 2021-09-12
+- removed `Arduino.h` inclunde in .h file
+- added default case to `switch` in `errorToString()`
+- changed `char*` to `String` in `setup()` and convert them to `const char` inside the function
 
 ## [1.3.0] - 2020-01-09
 - added M5Stack example
 - added simple example
 
 ## [1.2.0] - 2020-12-31
-- added ```getProgress()``` function
+- added `getProgress()` function
 - updated the example
 
 ## [1.1.1] - 2020-09-01

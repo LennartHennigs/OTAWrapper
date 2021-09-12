@@ -2,7 +2,7 @@ OTAWrapper
 ==========
 
 * Author: Lennart Hennigs (https://www.lennarthennigs.de)
-* Copyright (C) 2021 Lennart Hennigs.
+* Copyright (C) 2020-021 Lennart Hennigs.
 * Released under the MIT license.
 
 
@@ -37,7 +37,7 @@ int getProgress();
 String errorToString(ota_error_t error);
 ota_error_t getLastError();
 
-void setup(char *name, char *passwd = "", int port = 8266);
+void setup(String name, String passwd = "", int port = 8266);
 void loop();
 
 ```
