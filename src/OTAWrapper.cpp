@@ -50,16 +50,18 @@ ota_error_t OTAWrapper::getLastError() {
 
 String OTAWrapper::errorToString(ota_error_t error) {
   switch (error) {
-  case OTA_AUTH_ERROR:
-    return "Auth Failed";
-  case OTA_BEGIN_ERROR:
-    return "Begin Failed";
-  case OTA_CONNECT_ERROR:
-    return "Connect Failed";
-  case OTA_RECEIVE_ERROR:
-    return "Receive Failed";
-  case OTA_END_ERROR:
-    return "End Failed";
+    case OTA_AUTH_ERROR:
+      return "Auth Failed";
+    case OTA_BEGIN_ERROR:
+      return "Begin Failed";
+    case OTA_CONNECT_ERROR:
+      return "Connect Failed";
+    case OTA_RECEIVE_ERROR:
+      return "Receive Failed";
+    case OTA_END_ERROR:
+      return "End Failed";
+    default:
+      return "Unknown OTA Error";
   }
 }
 
