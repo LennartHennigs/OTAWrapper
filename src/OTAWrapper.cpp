@@ -71,7 +71,7 @@ String OTAWrapper::errorToString(ota_error_t error) {
   }
 
 
-void OTAWrapper::setup(char *name, char *passwd /* = "" */, int port /* = 8266 */) {
+void OTAWrapper::setup(String name, String passwd /* = "" */, int port /* = 8266 */) {
   ArduinoOTA.onStart([=] () {
     #ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, LOW);
@@ -105,9 +105,11 @@ void OTAWrapper::setup(char *name, char *passwd /* = "" */, int port /* = 8266 *
   });
 
   ArduinoOTA.setPort(port);
-  ArduinoOTA.setHostname(name);
+  const char* host = name.c_str();
+  ArduinoOTA.setHostname(host);
   if (passwd != "") {
-    ArduinoOTA.setPassword(passwd);
+    const char* pass = passwd.c_str();
+    ArduinoOTA.setPassword(pass);
   }
   ArduinoOTA.begin();
 }
