@@ -39,7 +39,7 @@ class OTAWrapper {
    String errorToString(ota_error_t error);
    ota_error_t getLastError();
    
-   void setup(char *name, char *passwd = "", int port = 8266);
+   void setup(String name, String passwd = "", int port = 8266);
    void loop();
 };
 /////////////////////////////////////////////////////////////////
