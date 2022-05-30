@@ -1,13 +1,10 @@
-OTAWrapper
-==========
+# OTAWrapper
 
-* Author: Lennart Hennigs (https://www.lennarthennigs.de)
-* Copyright (C) 2021 Lennart Hennigs.
-* Released under the MIT license.
+- Author: Lennart Hennigs (https://www.lennarthennigs.de)
+- Copyright (C) 2021-2022 Lennart Hennigs.
+- Released under the MIT license.
 
-
-Description
------------
+## Description
 
 This class maked it easier to implement the OTA functionality.
 
@@ -15,16 +12,13 @@ This class maked it easier to implement the OTA functionality.
 - You can get the progress count and implement your own status display.
 - It tries to use the builtin LED to show the update status
 
+**Note:** For the class to work, you need to call the `loop()` member function in your sketch's `loop()` function. See the example for more details.
 
-- **Note:** For the class to work, you need to call the `loop()` member function in your sketch's `loop()` function. See the example for more details.
-
-How to Use
-----------
+## How to Use
 
 These are the constructor and the member functions the library provides:
 
-
-```
+``` c++
 OTAWrapper();
    
 void onStart(CallbackFunction f);  
