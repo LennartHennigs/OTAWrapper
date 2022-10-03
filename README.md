@@ -14,6 +14,9 @@ This class maked it easier to implement the OTA functionality.
 
 **Note:** For the class to work, you need to call the `loop()` member function in your sketch's `loop()` function. See the example for more details.
 
+If you find this library helpful please consider giving it a ⭐️ at [GitHub](https://github.com/LennartHennigs/OTAWrapper) and/or [buy me a ☕️](https://ko-fi.com/lennart0815). Thank you!
+
+
 ## How to Use
 
 These are the constructor and the member functions the library provides:
