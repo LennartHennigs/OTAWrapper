@@ -1,7 +1,7 @@
 # OTAWrapper
 
 - Author: Lennart Hennigs (<https://www.lennarthennigs.de>)
-- Copyright (C) 2021-2022 Lennart Hennigs.
+- Copyright (C) 2021-2023 Lennart Hennigs.
 - Released under the MIT license.
 
 ## Description

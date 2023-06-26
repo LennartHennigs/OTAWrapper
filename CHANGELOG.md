@@ -3,11 +3,16 @@
 ## Unreleased
 
 - **Note:** Unreleased changes are checked in but not part of an official release (available through the Arduino IDE or PlatfomIO) yet. This allows you to test WiP features and give feedback to them.
+
 - none
+
+## [1.3.2] - 2023-06-26
+
+- updated `setup()`now uses `const char*`
 
 ## [1.3.1] - 2021-09-12
 
-- removed `Arduino.h` inclunde in .h file
+- removed `Arduino.h` include in `OTAWrapper.h` file
 - added default case to `switch` in `errorToString()`
 - changed `char*` to `String` in `setup()` and convert them to `const char` inside the function
 
