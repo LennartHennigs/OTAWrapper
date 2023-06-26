@@ -61,6 +61,7 @@ String OTAWrapper::errorToString(ota_error_t error) {
   case OTA_END_ERROR:
     return "End Failed";
   }
+  return "";
 }
 
 /////////////////////////////////////////////////////////////////
@@ -71,7 +72,7 @@ String OTAWrapper::errorToString(ota_error_t error) {
   }
 
 
-void OTAWrapper::setup(char *name, char *passwd /* = "" */, int port /* = 8266 */) {
+void OTAWrapper::setup(const char *name, const char *passwd /* = "" */, const int port /* = 8266 */) {
   ArduinoOTA.onStart([=] () {
     #ifdef LED_BUILTIN
       digitalWrite(LED_BUILTIN, LOW);
