@@ -107,7 +107,7 @@ void OTAWrapper::setup(const char *name, const char *passwd /* = "" */, const in
 
   ArduinoOTA.setPort(port);
   ArduinoOTA.setHostname(name);
-  if (passwd != "") {
+  if (strcmp(passwd, "") != 0) {
     ArduinoOTA.setPassword(passwd);
   }
   ArduinoOTA.begin();
